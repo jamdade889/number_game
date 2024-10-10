@@ -1,0 +1,51 @@
+import java.util.Scanner;
+
+public class NamberGame
+{
+    @SuppressWarnings("resource")
+    public static void main(String[] args) {
+        Scanner sc =new Scanner(System.in);
+        int chances=8;
+        int finals=0;
+        boolean playAgain=true;
+        System.out.println("WELCOME TO BUDDY....!");
+        System.out.println("HEY BUDDY YOU HAVE ABOUT TO WIN THE GAME");
+        while(playAgain){
+            int rand=getrandN(1,100);
+            boolean guess=false;
+            for(int i=0;i<chances;i++){
+                System.out.println("chance "+ (i+1) +"Enter your guess:");
+                int user=sc.nextInt();
+                if(user==rand){
+                    guess=true;
+                    finals+=1;
+                    System.out.println("you won it.");
+                    break;
+                }
+                else if(user>rand){
+                    System.out.println("TOO HIGH");
+                
+                }
+                else{
+                    System.out.println("TOO LOW");
+                }
+            }
+            if(guess==false){
+                System.out.println("sorry buddy. you loss the chances.the number is"+rand);
+
+            }
+            System.out.println("do you want to play Again(Y/N)");
+            String pA=sc.next();
+            playAgain=pA.equalsIgnoreCase("Y");
+
+
+        }
+        System.out.println("That's it Buddy,hope you Enjoyed it");
+        System.out.println("here is your Score"+finals);
+    }
+        public static int getrandN(int min,int max){
+            return (int)(Math.random()*(max-min+1)+min);
+        }
+
+    
+}
